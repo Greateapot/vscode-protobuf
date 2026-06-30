@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Protocol Buffers",
+  "scopeName": "source.proto",
+
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#booleans" },
+    { "include": "#operators" },
+    { "include": "#brackets" },
+    { "include": "#punctuation" }
+  ],
+
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.proto",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.proto",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.proto",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.proto",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.proto",
+          "match": "\\b(?:true|false)\\b"
+        }
+      ]
+    },
+
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.proto",
+          "match": "=|\\+|-"
+        }
+      ]
+    },
+
+    "brackets": {
+      "patterns": [
+        {
+          "name": "punctuation.section.braces.begin.proto",
+          "match": "\\{"
+        },
+        {
+          "name": "punctuation.section.braces.end.proto",
+          "match": "\\}"
+        },
+        {
+          "name": "punctuation.section.parens.begin.proto",
+          "match": "\\("
+        },
+        {
+          "name": "punctuation.section.parens.end.proto",
+          "match": "\\)"
+        },
+        {
+          "name": "punctuation.section.brackets.begin.proto",
+          "match": "\\["
+        },
+        {
+          "name": "punctuation.section.brackets.end.proto",
+          "match": "\\]"
+        }
+      ]
+    },
+
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.comma.proto",
+          "match": ","
+        },
+        {
+          "name": "punctuation.terminator.statement.proto",
+          "match": ";"
+        },
+        {
+          "name": "punctuation.accessor.proto",
+          "match": "\\."
+        },
+        {
+          "name": "punctuation.separator.key-value.proto",
+          "match": ":"
+        }
+      ]
+    }
+  }
+}
