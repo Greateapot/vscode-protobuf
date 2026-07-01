@@ -1,0 +1,301 @@
+{
+  "$schema": "vscode://schemas/snippets",
+
+  "syntax-proto2": {
+    "prefix": ["syntax", "syntax/proto2", "sp2"],
+    "description": "Protobuf 2 syntax declaration.",
+    "body": ["syntax = \"proto2\";", "$0"]
+  },
+
+  "syntax-proto3": {
+    "prefix": ["syntax", "syntax/proto3", "sp3"],
+    "description": "Protobuf 3 syntax declaration.",
+    "body": ["syntax = \"proto3\";", "$0"]
+  },
+
+  "edition-2023": {
+    "prefix": ["edition", "edition/2023", "ed23"],
+    "description": "Protobuf 2023 edition declaration.",
+    "body": ["edition = \"2023\";", "$0"]
+  },
+
+  "edition-2024": {
+    "prefix": ["edition", "edition/2024", "ed24"],
+    "description": "Protobuf 2024 edition declaration.",
+    "body": ["edition = \"2024\";", "$0"]
+  },
+
+  "package": {
+    "prefix": ["package", "pkg"],
+    "description": "Package declaration.",
+    "body": ["package ${1:package};", "$0"]
+  },
+
+  "import": {
+    "prefix": ["import", "imp"],
+    "description": "Import declaration.",
+    "body": ["import \"${1:path}\";", "$0"]
+  },
+
+  "import-google-api": {
+    "prefix": "import/google/api",
+    "description": "Import Google API component.",
+    "body": ["import \"google/api/${1:path}\";", "$0"]
+  },
+
+  "import-google-protobuf": {
+    "prefix": "import/google/protobuf",
+    "description": "Import well-known type.",
+    "body": ["import \"google/protobuf/${1:path}\";", "$0"]
+  },
+
+  "import-google-types": {
+    "prefix": "import/google/type",
+    "description": "Import Google common type.",
+    "body": ["import \"google/type/${1:path}\";", "$0"]
+  },
+
+  "option": {
+    "prefix": ["option", "opt"],
+    "description": "Option declaration.",
+    "body": ["option ${1:option} = ${2:value};", "$0"]
+  },
+
+  "option-deprecated": {
+    "prefix": "option/deprecated",
+    "description": "Deprecated option declaration.",
+    "body": ["option deprecated = true;", "$0"]
+  },
+
+  "option-allow_alias": {
+    "prefix": "option/allow_alias",
+    "description": "Allow alias option declaration.",
+    "body": ["option allow_alias = true;", "$0"]
+  },
+
+  "option-java_package": {
+    "prefix": "option/java_package",
+    "description": "java package option declaration.",
+    "body": ["option java_package = \"${1:java.package.name}\";", "$0"]
+  },
+
+  "option-java_outer_classname": {
+    "prefix": "option/java_outer_classname",
+    "description": "Java outer classname option declaration.",
+    "body": ["option java_outer_classname = \"${1:ClassName}\";", "$0"]
+  },
+
+  "option-java_multiple_files": {
+    "prefix": "option/java_multiple_files",
+    "description": "Java multiple files option declaration.",
+    "body": ["option java_multiple_files = ${1:true};", "$0"]
+  },
+
+  "option-golang_package": {
+    "prefix": "option/golang_package",
+    "description": "Go package option declaration.",
+    "body": ["option go_package = \"${1:go.module}\";", "$0"]
+  },
+
+  "option-cc_enable_arenas": {
+    "prefix": "option/cc_enable_arenas",
+    "description": "C++ enable arenas option declaration.",
+    "body": ["option cc_enable_arenas = ${1:true};", "$0"]
+  },
+
+  "option-objc_class_prefix": {
+    "prefix": "option/objc_class_prefix",
+    "description": "ObjectiveC class prefix option declaration.",
+    "body": ["option objc_class_prefix = \"${1:PREFIX}\";", "$0"]
+  },
+
+  "option-csharp_namespace": {
+    "prefix": "option/csharp_namespace",
+    "description": "C# namespace option declaration.",
+    "body": ["option csharp_namespace = \"${1:Example.Proto}\";", "$0"]
+  },
+
+  "option-php_namespace": {
+    "prefix": "option/php_namespace",
+    "description": "PHP namespace option declaration.",
+    "body": ["option php_namespace = \"${1:Example\\\\Proto}\";", "$0"]
+  },
+
+  "option-ruby_package": {
+    "prefix": "option/ruby_package",
+    "description": "Ruby package option declaration.",
+    "body": ["option ruby_package = \"${1:Example::Proto}\";", "$0"]
+  },
+
+  "option-swift_prefix": {
+    "prefix": "option/swift_prefix",
+    "description": "Swift prefix option declaration.",
+    "body": ["option swift_prefix = \"${1:EXP}\";", "$0"]
+  },
+
+  "enum": {
+    "prefix": "enum",
+    "description": "Enum declaration.",
+    "body": ["enum ${1:EnumName} {", "\t$0", "}"]
+  },
+
+  "message": {
+    "prefix": ["message", "msg"],
+    "description": "Message declaration.",
+    "body": ["message ${1:MessageName} {", "\t$0", "}"]
+  },
+
+  "extend": {
+    "prefix": ["extend", "ext"],
+    "description": "Extend declaration.",
+    "body": ["extend ${1:MessageName} {", "\t$0", "}"]
+  },
+
+  "service": {
+    "prefix": ["service", "svc"],
+    "description": "Service declaration.",
+    "body": ["service ${1:ServiceName} {", "\t$0", "}"]
+  },
+
+  "method": {
+    "prefix": ["rpc", "method"],
+    "description": "Service method declaration.",
+    "body": [
+      "rpc ${1:MethodName}(${2:RequestMessage}) returns (${3:ResponseMessage}) {",
+      "\t$0",
+      "}"
+    ]
+  },
+
+  "method-server-stream": {
+    "prefix": "rpc/stream/server",
+    "description": "Service server-stream method declaration.",
+    "body": [
+      "rpc ${1:MethodName}(${2:RequestMessage}) returns (stream ${3:ResponseMessage}) {",
+      "\t$0",
+      "}"
+    ]
+  },
+
+  "method-client-stream": {
+    "prefix": "rpc/stream/client",
+    "description": "Service client-stream method declaration.",
+    "body": [
+      "rpc ${1:MethodName}(stream ${2:RequestMessage}) returns (${3:ResponseMessage}) {",
+      "\t$0",
+      "}"
+    ]
+  },
+
+  "method-bidirectional-stream": {
+    "prefix": "rpc/stream/bidirectional",
+    "description": "Service bidirectional-stream method declaration.",
+    "body": [
+      "rpc ${1:MethodName}(stream ${2:RequestMessage}) returns (stream ${3:ResponseMessage}) {",
+      "\t$0",
+      "}"
+    ]
+  },
+
+  "field-bool": {
+    "prefix": ["field/bool", "fbo"],
+    "description": "Boolean field declaration.",
+    "body": ["bool ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-int32": {
+    "prefix": ["field/int32", "fi32"],
+    "description": "Int int32 field declaration.",
+    "body": ["int32 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-int64": {
+    "prefix": ["field/int64", "fi64"],
+    "description": "Int int64 field declaration.",
+    "body": ["int64 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-uint32": {
+    "prefix": ["field/uint32", "fu32"],
+    "description": "uint32 field declaration.",
+    "body": ["uint32 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-uint64": {
+    "prefix": ["field/uint64", "fu64"],
+    "description": "Int uint64 field declaration.",
+    "body": ["uint64 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-sint32": {
+    "prefix": ["field/sint32", "fs32"],
+    "description": "Int sint32 field declaration.",
+    "body": ["sint32 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-sint64": {
+    "prefix": ["field/sint64", "fs64"],
+    "description": "Int sint64 field declaration.",
+    "body": ["sint64 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-fixed32": {
+    "prefix": ["field/fixed32", "ff32"],
+    "description": "fixed32 field declaration.",
+    "body": ["fixed32 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-fixed64": {
+    "prefix": ["field/fixed64", "ff64"],
+    "description": "Int fixed64 field declaration.",
+    "body": ["fixed64 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-sfixed32": {
+    "prefix": ["field/sfixed32", "fsf32"],
+    "description": "Int sfixed32 field declaration.",
+    "body": ["sfixed32 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-sfixed64": {
+    "prefix": ["field/sfixed64", "fsf64"],
+    "description": "Int sfixed64 field declaration.",
+    "body": ["sfixed64 ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-float": {
+    "prefix": ["field/float", "ffl"],
+    "description": "Float field declaration.",
+    "body": ["float ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-double": {
+    "prefix": ["field/double", "fdo"],
+    "description": "Double field declaration.",
+    "body": ["double ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-string": {
+    "prefix": ["field/string", "fst"],
+    "description": "String field declaration.",
+    "body": ["string ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-bytes": {
+    "prefix": ["field/bytes", "fby"],
+    "description": "Bytes field declaration.",
+    "body": ["bytes ${1:field_name} = ${2:tag};", "$0"]
+  },
+
+  "field-map": {
+    "prefix": ["field/map", "fm"],
+    "description": "Map field declaration.",
+    "body": ["map<${1:key}, ${2:value}> ${3:field_name} = ${4:tag};", "$0"]
+  },
+
+  "field-oneof": {
+    "prefix": ["field/oneof", "foo"],
+    "description": "OneOf field declaration.",
+    "body": ["oneof ${3:name} {", "\t$0", "}"]
+  }
+}

@@ -28,5 +28,5 @@
     "lib": ["ES2022"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", ".vscode-test", "**/*.test.ts", "examples"]
+  "exclude": ["node_modules"]
 }
