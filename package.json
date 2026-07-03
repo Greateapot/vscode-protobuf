@@ -3,7 +3,7 @@
   "name": "vscode-protobuf",
   "displayName": "Protobuf",
   "description": "Protocol Buffers support for VS Code via protols",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "Greateapot",
   "author": {
     "name": "Greateapot",
