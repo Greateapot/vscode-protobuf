@@ -296,6 +296,46 @@
   "field-oneof": {
     "prefix": ["field/oneof", "foo"],
     "description": "OneOf field declaration.",
-    "body": ["oneof ${3:name} {", "\t$0", "}"]
+    "body": ["oneof ${3:field_name} {", "\t$0", "}"]
+  },
+
+  "option-field-behavior": {
+    "prefix": "option/field-behavior",
+    "description": "Field behavior option declaration.",
+    "body": "(google.api.field_behavior) = ${1|OPTIONAL,REQUIRED,OUTPUT_ONLY,INPUT_ONLY,IMMUTABLE,UNORDERED_LIST,NON_EMPTY_DEFAULT,IDENTIFIER|}"
+  },
+
+  "option-resource-reference": {
+    "prefix": "option/resource-reference",
+    "description": "Resource reference option declaration.",
+    "body": "(google.api.resource_reference).${1|type,child_type|} = \"$2\""
+  },
+
+  "option-resource-definition": {
+    "prefix": "option/resource-definition",
+    "description": "Resource definition option declaration.",
+    "body": [
+      "option (google.api.resource) = {",
+      "\ttype: \"${1:library-example.googleapis.com/Book}\",",
+      "\tpattern: \"${4:$3/{$2\\}}\",",
+      "\tsingular: \"${2:book}\",",
+      "\tplural: \"${3:books}\"",
+      "};",
+      "$0"
+    ]
+  },
+
+  "option-resource-definition-file": {
+    "prefix": "option/resource-definition/file",
+    "description": "Resource definition option declaration (file scope).",
+    "body": [
+      "option (google.api.resource_definition) = {",
+      "\ttype: \"${1:library-example.googleapis.com/Book}\",",
+      "\tpattern: \"${4:$3/{$2\\}}\",",
+      "\tsingular: \"${2:book}\",",
+      "\tplural: \"${3:books}\"",
+      "};",
+      "$0"
+    ]
   }
 }

@@ -25,7 +25,8 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "declarationMap": true,
-    "lib": ["ES2022"]
+    "lib": ["ES2022"],
+    "types": ["vscode", "node"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

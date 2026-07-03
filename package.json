@@ -51,6 +51,70 @@
         "language": "proto",
         "path": "./snippets/proto.json"
       }
+    ],
+    "configuration": {
+      "title": "Protobuf",
+      "properties": {
+        "protobuf.includePaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional include paths used by protols and linters."
+        },
+        "protobuf.protols.path": {
+          "type": "string",
+          "default": "protols",
+          "description": "Path to the protols executable."
+        },
+        "protobuf.protols.args": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional arguments."
+        },
+        "protobuf.apiLinter.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Google API Linter diagnostics."
+        },
+        "protobuf.apiLinter.path": {
+          "type": "string",
+          "default": "api-linter",
+          "description": "Path to the api-linter executable."
+        },
+        "protobuf.apiLinter.args": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional arguments."
+        },
+        "protobuf.apiLinter.config": {
+          "type": "string",
+          "default": "",
+          "description": "Path to api-linter configuration file."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[proto]": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit"
+        },
+        "editor.semanticHighlighting.enabled": true
+      }
+    },
+    "commands": [
+      {
+        "command": "protobuf.restartLanguageServer",
+        "title": "Restart Language Server",
+        "category": "Protobuf"
+      }
     ]
   },
   "dependencies": {
