@@ -3,13 +3,14 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import * as path from 'node:path';
 import { Disposable } from 'vscode-languageclient';
+import { resolvePath } from './util';
 
 const execFileAsync = promisify(execFile);
 
 export class ApiLinter implements Disposable {
   private config: vscode.WorkspaceConfiguration;
   private diagnostics: vscode.DiagnosticCollection;
-  private cancelationToken: vscode.CancellationTokenSource | undefined;
+  private cancelationToken: vscode.CancellationTokenSource | null = null;
 
   private executable: string;
   private args: string[];
@@ -20,14 +21,9 @@ export class ApiLinter implements Disposable {
 
     const executable = config.get<string>('apiLinter.path', 'api-linter');
     const args = [...config.get<string[]>('apiLinter.args', [])];
-    const includePaths = config.get<string[]>('includePaths', []);
     const configFile = config.get<string>('apiLinter.config', '');
 
     args.push('--output-format', 'json');
-
-    for (const include of includePaths) {
-      args.push('--proto-path', include);
-    }
 
     if (configFile.length > 0) {
       args.push('--config', configFile);
@@ -51,10 +47,16 @@ export class ApiLinter implements Disposable {
     if (!this.enabled) return;
 
     const workspace = vscode.workspace.getWorkspaceFolder(document.uri);
+    const config = vscode.workspace.getConfiguration('protobuf');
 
     this.resetCancelationToken();
 
     const args = [...this.args];
+
+    const includePaths = config.get<string[]>('includePaths', []);
+    for (const path of includePaths) {
+      args.push('--proto-path', resolvePath(workspace, path));
+    }
 
     if (workspace) {
       args.push('--proto-path', workspace.uri.fsPath); // workspace root
@@ -62,7 +64,7 @@ export class ApiLinter implements Disposable {
     }
 
     let stdout: string;
-    let message: any | undefined;
+    let message: string | null = null;
 
     try {
       const result = await execFileAsync(this.executable, args);
@@ -73,6 +75,12 @@ export class ApiLinter implements Disposable {
     }
 
     if (this.isCancellationRequested) return;
+
+    if (message) {
+      vscode.window.showErrorMessage(message);
+      this.diagnostics.delete(document.uri);
+      return;
+    }
 
     try {
       this.diagnostics.set(document.uri, this.parseDiagnostics(stdout));
